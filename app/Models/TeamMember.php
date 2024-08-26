@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class TeamMember extends Model
 {
     use HasFactory;
+
+    protected $fillable = 
+    [
+        'name',
+         'email',
+         'phone',
+         'position'
+    ];
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 }
