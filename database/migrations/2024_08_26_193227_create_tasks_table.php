@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->enum('status', ['doing', 'done']); // enum is that it allows you to specify a list of possible values
+            $table->integer('time_spent')->default(0);
+            $table->text('problems_faced')->nullable();
+            $table->text('blockers')->nullable();
+            $table->foreignId('team_member_id')->constrained();
             $table->timestamps();
         });
     }
